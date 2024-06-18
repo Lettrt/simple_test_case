@@ -51,5 +51,5 @@ if __name__ == '__main__':
     departments = create_department(25)
     print('Отделы успешно созданы')
     print('Создаем работников')
-    create_employees(5000, departments)
+    create_employees(50000, departments)
     print('База данных успешно заполнена')

@@ -6,17 +6,17 @@
     </button>
     <div class="collapse" id="department-{{ department.id }}">
         <ul class="list-group ms-3">
+            {% if department.children.all %}
+                {% for child in department.children.all %}
+                    {% include 'department_item.html' with department=child %}
+                {% endfor %}
+            {% endif %}
             {% for employee in department.employees.all %}
                 <li class="list-group-item no-border ms-3">
                     <b>ФИО</b>: {{ employee.full_name }}. <b>Должность</b>: {{ employee.job_title }}.
                     <b>Дата приема на работу</b>: {{ employee.employment_date }}. <b>Зарплата</b>: {{ employee.salary }} руб.
                 </li>
             {% endfor %}
-            {% if department.children.all %}
-                {% for child in department.children.all %}
-                    {% include 'department_item.html' with department=child %}
-                {% endfor %}
-            {% endif %}
         </ul>
     </div>
 </li>
