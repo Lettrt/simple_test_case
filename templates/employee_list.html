@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Список сотрудников{% endblock %}
+
+{% block content %}
+    <h1>Сотрудники</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Полное имя</th>
+                <th>Должность</th>
+                <th>Дата найма</th>
+                <th>Зарплата</th>
+                <th>Отдел</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.full_name }}</td>
+                    <td>{{ employee.position }}</td>
+                    <td>{{ employee.hire_date }}</td>
+                    <td>{{ employee.salary }}</td>
+                    <td>{{ employee.department.name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
