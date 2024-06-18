@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Список отделов{% endblock %}
+
+{% block content %}
+    <h1>Отделы</h1>
+    <ul class="list-group">
+        {% for department in departments %}
+        <li class="list-group-item">
+            {{ department.name }}
+            {% if department.children.all %}
+            <ul class="list-group ml-3">
+                {% for child in department.children.all %}
+                <li class="list-group-item">
+                    {{ child.name }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
