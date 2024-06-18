@@ -5,11 +5,11 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #environ settings
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
-IS_DB = bool(int(env('IS_DB')))
+DEBUG = env.bool('DEBUG', default=False)
+IS_DB = env.bool('IS_DB', default=True)
 
 ALLOWED_HOSTS = ['*']
 
